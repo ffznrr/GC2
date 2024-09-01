@@ -19,23 +19,21 @@ const HomePage = () => {
   const [sort, setSort] = useState("ASC");
 
   const getData = async () => {
-    await axios
-      .get(
+    try {
+      setLoading(true);
+      const { data } = await axios.get(
         `http://ffznrr.dev/pub/products/?page=${page}&search=${search}${
           filter ? `&filter=${filter}` : ""
         }&sort=${sort}`,
-      )
-      .then((response) => {
-        setData(response.data.rows);
-        setLoading(true);
-        setPagination(response.data.totalPage);
-      })
-      .catch((response) => {
-        console.log(response);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+      );
+      console.log(data);
+      setData(data.rows);
+      setPagination(data.totalPage);
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
