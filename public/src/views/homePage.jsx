@@ -22,7 +22,7 @@ const HomePage = () => {
     try {
       setLoading(true);
       const { data } = await axios.get(
-        `http://ffznrr.dev/pub/products/?page=${page}&search=${search}${
+        `https://ffznrr.dev/pub/products/?page=${page}&search=${search}${
           filter ? `&filter=${filter}` : ""
         }&sort=${sort}`,
       );
