@@ -20,7 +20,6 @@ const EditImage = () => {
       });
 
       navigate("/home");
-
       Toastify({
         text: "Success Patch Image",
         duration: 3000,
